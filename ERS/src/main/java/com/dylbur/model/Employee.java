@@ -15,29 +15,28 @@ public class Employee {
 	@SequenceGenerator(name = "emp_id_seq", sequenceName = "emp_id_seq", allocationSize = 1)
 	@GeneratedValue(generator = "emp_id_seq", strategy = GenerationType.AUTO)
 	private int empId;
-	
+
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
-	
+
 	@Column(name = "password", nullable = false)
-	private String password; 
-	
+	private String password;
+
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
+
 	@Column(name = "last_name", nullable = false)
 	private String lastName;
-	
-	//double check
-	@Column(name = "is_Manager", columnDefinition="Number(1,0) default '0'", nullable = false)
-	private int isManager;
-	
-	public Employee(){
+
+	@Column(name = "is_Manager", nullable = false)
+	private boolean isManager;
+
+	public Employee() {
 		super();
-		
-		
+
 	}
-	
-	public Employee(int empId, String email, String password, String firstName, String lastName, int isManager) {
+
+	public Employee(int empId, String email, String password, String firstName, String lastName, boolean isManager) {
 		super();
 		this.empId = empId;
 		this.email = email;
@@ -50,37 +49,48 @@ public class Employee {
 	public int getEmpId() {
 		return empId;
 	}
+
 	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public int getIsManager() {
+
+	public boolean getIsManager() {
 		return isManager;
 	}
-	public void setIsManager(int isManager) {
+
+	public void setIsManager(boolean isManager) {
 		this.isManager = isManager;
 	}
 
@@ -97,7 +107,7 @@ public class Employee {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + empId;
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + isManager;
+		result = prime * result + (isManager ? 1231 : 1237);
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
@@ -138,6 +148,7 @@ public class Employee {
 			return false;
 		return true;
 	}
+
 	
-	
+
 }
