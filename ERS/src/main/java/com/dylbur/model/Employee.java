@@ -16,7 +16,19 @@ public class Employee {
 	@GeneratedValue(generator = "emp_id_seq", strategy = GenerationType.AUTO)
 	private int empId;
 	
-	private String email, password, firstName, lastName;
+	@Column(name = "email", nullable = false, unique = true)
+	private String email;
+	
+	@Column(name = "password", nullable = false)
+	private String password; 
+	
+	@Column(name = "first_name", nullable = false)
+	private String firstName;
+	@Column(name = "last_name", nullable = false)
+	private String lastName;
+	
+	//double check
+	@Column(name = "is_Manager", columnDefinition="Number(1,0) default '0'", nullable = false)
 	private int isManager;
 	
 	public Employee(){
